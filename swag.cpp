@@ -1,7 +1,10 @@
 #include <iostream>
+#include <string>
 
 int main(void){
-    std::cout << "testing github and stuff" << endl;
-    
+
+    std::string myStr = "m$ makes shitty extensions";
+    std::cout << myStr << std::endl;
+    std::cout << sizeof(myStr);
     return 0;
 }
