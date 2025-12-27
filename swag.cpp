@@ -3,8 +3,10 @@
 
 int main(void){
 
-    std::string myStr = "m$ makes shitty extensions";
-    std::cout << myStr << std::endl;
-    std::cout << sizeof(myStr);
+    int x = 7;
+    std::cout << x << std::endl;
+    x = 3;
+    std::cout << x << std::endl;
+    
     return 0;
 }
