@@ -1,24 +1,53 @@
 #include <iostream>
 #include <string>
+#include <cctype>
 
-float tempConv(float inputTemp, char unit){
-    
+enum TempUnits{
+    CELSIUS = 0,
+    FAHRENHEIT = 1
+};
+
+float tempConvert(float inputTemp, enum TempUnits f_or_c, char* outputUnit){
+    switch(f_or_c){
+        case CELSIUS:
+            *outputUnit = 'f';
+            return (inputTemp*(9.0/5.0)) + 32.0;
+            break;
+        case FAHRENHEIT:
+            *outputUnit = 'c';
+            return (inputTemp - 32.0)*(5.0/9.0);
+            break;
+        default:
+            std::cout << "Conversion error, try again." <<std::endl;
+            return 0.0;
+    }
 }
 
 int main(void){
 
     float inputTemp;
-    char unit;
+    float outputTemp;
+
+    char raw;
+    char inputUnit;
+    char outputUnit;
+    enum TempUnits f_or_c;
 
     std::cout << "What is your temp to be converted?" << std::endl;
     std::cin >> inputTemp;
 
-    std::cout << "Which units? Type 'f' for Fahrenheit "
+    std::cout << "Which units? Type 'f' for Fahrenheit " \
     "and 'c' for Celsius" << std::endl;
-    std::cin >> unit
+    std::cin >> raw;
 
-    std::cout << "Debug: entered temp was " << inputTemp << std::endl;
-    std::cout << "Debug: entered unit was " << unit << std::endl;
+    //lowercase forced conversion
+    inputUnit = static_cast<char>(std::tolower(static_cast<unsigned char>(raw)));
+
+    if (inputUnit == 'c') f_or_c = CELSIUS;
+    else if (inputUnit == 'f') f_or_c = FAHRENHEIT;
+
+    outputTemp = tempConvert(inputTemp, f_or_c, &outputUnit);
+    std::cout << "Given: " << inputTemp << " degrees " << inputUnit << " -> " << outputTemp << " degrees " << outputUnit << std::endl;
 
     return 0;
 }
