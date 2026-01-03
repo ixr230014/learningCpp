@@ -1,29 +1,24 @@
 #include <iostream>
-#include <array>
-#include <algorithm>
+#include <string>
+
+float tempConv(float inputTemp, char unit){
+    
+}
 
 int main(void){
 
-    /*
-    int arr[] = {1,3,5};
-    std::array<int,3> arr2{1,3,5};
+    float inputTemp;
+    char unit;
 
-    //C-style for loop
-    for(int i=0; i<arr2.size(); i=i+1){
-        std::cout << arr2[i] << std::endl;
-    }
+    std::cout << "What is your temp to be converted?" << std::endl;
+    std::cin >> inputTemp;
 
-    //range-based for loops
-    for(int element: arr2){
-        std::cout << element << std::endl;
-    }
-*/
-    std::array<int,3> myArray;
-    std::fill(std::begin(myArray), std::end(myArray), 1024);
+    std::cout << "Which units? Type 'f' for Fahrenheit "
+    "and 'c' for Celsius" << std::endl;
+    std::cin >> unit
 
-    for(int element: myArray){
-        std::cout << element << std::endl;
-    }
+    std::cout << "Debug: entered temp was " << inputTemp << std::endl;
+    std::cout << "Debug: entered unit was " << unit << std::endl;
 
     return 0;
 }
